@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Subguessr</title>
+    <link href="./Portfolio Item - Start Bootstrap Template_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Portfolio Item - Start Bootstrap Template_files/portfolio-item.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src = "../jquery-3.1.1.min.js"></script>
+    <script>
+        var sub = ''
+        var score = 0
+        var title = ''
+        function checkURL(url){
+            return(url.match(/\.(jpeg|jpg|gif|png)$/) == null);
+        }
+        function sendReq(){
+            $("#title").html("")
+            $("#start").prop("disabled",true);
+            console.log("");
+            var asdf = Math.floor(Math.random()*4)
+            if(asdf == 0){
+                sub = 'aww'
+            }
+            if(asdf == 1){
+                sub = 'funny'
+            }
+            if(asdf == 2){
+                sub = 'mildlyinteresting'
+            }
+            if(asdf == 3){
+                sub = 'pics'
+            }
+            console.log(sub);
+            $('#guess').attr("src","https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif");
+            $.ajax({
+                type: "GET",
+                data:{
+                restrict_sr: "true"
+                },
+                url: "http://www.reddit.com/r/" + sub + "/top.json?limit=100",
+                success: function(response) {
+                    console.log(response);
+                    var children = response.data.children;
+                    var rng = Math.floor(Math.random()*100)
+                    while(checkURL(children[rng].data.url)||children[rng].data.url.includes("gfycat.com")){
+                        rng = Math.floor(Math.random()*100)
+                        console.log(children[rng].data.url)
+                    }
+                    console.log(children[rng].data.url)
+                    title = children[rng].data.title
+                    if(children[rng].data.url.includes("gfycat.com")){
+                        $('#guess').replaceWith("<div class='gfyitem' data-id='CandidImmaterialDromedary'></div>")
+                    }
+                    $('#guess').attr("src",children[rng].data.url);
+            },
+        });
+        }
+        window.onload=function(){
+            sendReq();
+        }
+        function sendGuess1(){
+            if(sub == 'funny'){
+                score=score+10;
+                $('#scorebox').html("Score: " + score)
+                sendReq()
+            }
+            else{
+                score= 0
+                $('#scorebox').html("Score: 0")
+            }
+        }
+        function sendGuess2(){
+            if(sub == 'aww'){
+                score=score+10;
+                $('#scorebox').html("Score: " + score)
+                sendReq()
+            }
+            else{
+                score = 0
+                $('#scorebox').html("Score: 0")
+            }
+        }
+        function sendGuess3(){
+            if(sub == 'pics'){
+                score=score+10;
+                $('#scorebox').html("Score: " + score)
+                sendReq()
+            }
+            else{
+                score = 0
+                $('#scorebox').html("Score: 0")
+            }
+        }
+        function sendGuess4(){
+            if(sub == 'mildlyinteresting'){
+                score=score+10;
+                $('#scorebox').html("Score: " + score)
+                sendReq()
+            }
+            else{
+                score = 0
+                $('#scorebox').html("Score: 0")
+            }
+        }
+        function showTitle(){
+            
+            $("#title").html(title)
+            score = score - 5
+            $('#scorebox').html("Score: " + score)
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand">Reddit Game</a>
+            </div>>
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-8">
+                <img class="img-responsive" id = "guess">
+            </div>
+
+            <div class="col-md-4">
+                <h3>Reddit Submission Title:</h3>
+                <strong></b><p id = "title" ></p></strong>
+                <h3>Project Details</h3>
+                <ul>
+                    <li>Funny: The image is usually funny.</li>
+                    <li>Aww: The image usually evokes cuteness.</li>
+                    <li>Pics: The image is usually a picture.</li>
+                    <li>Mildlyinteresting: The image is usually mildly interesting.</li>
+                </ul>
+                <div id = "scorebox">Score: 0</div>
+                <div class="btn btn-lg btn-default" id = "scorebox" onclick = "showTitle()">Show Title (-5 pts)</div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <!-- Related Projects Row -->
+        <div class="row" id = "boxer">
+            <div class="col-lg-12">
+                <h3 class="page-header">Which Subreddit is this image from?</h3>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <a class="btn btn-lg btn-default" onclick="sendGuess1()">Funny</a>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <a class="btn btn-lg btn-default" onclick="sendGuess2()">Aww</a>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <a class="btn btn-lg btn-default" onclick="sendGuess3()">Pics</a>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <a class="btn btn-lg btn-default" onclick="sendGuess4()">Mildlyinteresting</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="./Portfolio Item - Start Bootstrap Template_files/jquery.js.download"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./Portfolio Item - Start Bootstrap Template_files/bootstrap.min.js.download"></script>
+
+
+
+
+</body></html>
