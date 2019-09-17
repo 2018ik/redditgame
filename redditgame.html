@@ -8,6 +8,8 @@
     <title>Subguessr</title>
     <link href="./Portfolio Item - Start Bootstrap Template_files/bootstrap.min.css" rel="stylesheet">
     <link href="./Portfolio Item - Start Bootstrap Template_files/portfolio-item.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css" type="text/css" />
     <script src = "../jquery-3.1.1.min.js"></script>
     <script>
@@ -35,7 +37,7 @@
                 sub = 'pics'
             }
             console.log(sub);
-            $('#guess').attr("src","https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif");
+            $('#guess').attr("src","spinner.gif");
             $.ajax({
                 type: "GET",
                 data:{
@@ -141,7 +143,7 @@
             <div class="col-md-4">
                 <h3>Reddit Submission Title:</h3>
                 <strong></b><p id = "title" ></p></strong>
-                <h3>Project Details</h3>
+                <h3>Explanation</h3>
                 <ul>
                     <li>Funny: The image is usually funny.</li>
                     <li>Aww: The image usually evokes cuteness.</li>
@@ -184,10 +186,7 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="./Portfolio Item - Start Bootstrap Template_files/jquery.js.download"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="./Portfolio Item - Start Bootstrap Template_files/bootstrap.min.js.download"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
 
