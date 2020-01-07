@@ -1,24 +1,29 @@
 #guess{
-    width:  750px;
-    height: 500px;
+    max-width:  750px;
+    max-height: 500px;
+}
+#imgcontainer{
+    text-align:center;
+    background:rgb(249, 249, 249);
 }
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
   color: #333;
   text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
+  background-color: rgb(243, 243, 243);
   border: 1px solid #fff;
 }
 #boxer{
-    background-color: #cecece;
+    background-color: #3b5998;
+    color: white;
     padding-bottom: 20px;
     border: 1px solid #fff;
 }
-#scorebox{
-    font-size: 25px;
-    background-color: #cecece;
-    padding: 10px;
-    margin-right: 50%;
-    border: 5px solid #fff;
+.guessbutton{
+    margin: 0 50px 0 50px;
+    background: rgb(243, 243, 243);
+}
+.guessbutton:hover{
+    background: white;
 }
