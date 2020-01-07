@@ -5,6 +5,7 @@
 #imgcontainer{
     text-align:center;
     background:rgb(249, 249, 249);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .btn-default,
 .btn-default:hover,
@@ -18,7 +19,7 @@
     background-color: #3b5998;
     color: white;
     padding-bottom: 20px;
-    border: 1px solid #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .guessbutton{
     margin: 0 50px 0 50px;
