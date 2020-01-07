@@ -41,7 +41,7 @@
                 data:{
                 restrict_sr: "true"
                 },
-                url: "http://www.reddit.com/r/" + sub + "/top.json?limit=500",
+                url: "http://www.reddit.com/r/" + sub + "/top.json?limit=100",
                 success: function(response) {
                     console.log(response);
                     var children = response.data.children;
