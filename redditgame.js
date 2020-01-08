@@ -2,13 +2,14 @@ $(function(){
     var sub = ''
     var score = 0
     var title = ''
+    sendReq();
     function checkURL(url){
         return(url.match(/\.(jpeg|jpg|gif|png)$/) == null);
     }
     function sendReq(){
         $("#title").html("")
         $("#start").prop("disabled",true);
-        console.log("");
+        console.log("asdf");
         var asdf = Math.floor(Math.random()*4)
         if(asdf == 0){
             sub = 'aww'
@@ -44,14 +45,10 @@ $(function(){
         },
     });
     }
-    
-    window.onload=function(){
-        sendReq();
-    }
     $('.guessbutton').on('click', function(){
         console.log("hi")
         if($(this).text().toLowerCase() == sub){
-            score += 5;
+            score += 10;
             $('#scorebox').html("Score: " + score)
             sendReq()
         }
